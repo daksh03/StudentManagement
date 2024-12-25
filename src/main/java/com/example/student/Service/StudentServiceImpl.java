@@ -33,10 +33,18 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student updateStudent(String id, Student student) {
         Student stud = getStudentbyId(id);
-        stud.setName(student.getName());
-        stud.setAge(student.getAge());
-        stud.setGrade(student.getGrade());
-        stud.setAddress(student.getAddress());
+        if (student.getName() != null) {
+            stud.setName(student.getName());
+        }
+        if (student.getAge() != null) {
+            stud.setAge(student.getAge());
+        }
+        if (student.getGrade() != null) {
+            stud.setGrade(student.getGrade());
+        }
+        if (student.getAddress() != null) {
+            stud.setAddress(student.getAddress());
+        }
         return studentRepo.save(stud);
     }
 

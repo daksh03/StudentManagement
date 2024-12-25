@@ -12,7 +12,7 @@ public class Student {
     @Id
     private String id;
     private String name;
-    private int age;
+    private Integer age;
     private String grade;
     private String address;
     
