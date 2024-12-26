@@ -1,8 +1,8 @@
 package com.example.student.Service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.student.Model.Student;
@@ -15,8 +15,8 @@ public class StudentServiceImpl implements StudentService {
     StudentRepo studentRepo;
 
     @Override
-    public List<Student> getAllStudents() {
-        return studentRepo.findAll();
+    public Page<Student> getAllStudents(int page, int size) {
+        return studentRepo.findAll(PageRequest.of(page, size));
     }
 
     @Override
@@ -27,6 +27,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student addStudent(Student student) {
+        if (studentRepo.existsById(student.getId())) {
+            throw new IllegalArgumentException("A student with this ID already exists!");
+        }
         return studentRepo.save(student);
     }
     
