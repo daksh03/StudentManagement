@@ -10,7 +10,7 @@
 </parent>
 	<groupId>com.example</groupId>
 	<artifactId>student</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>student</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -52,6 +52,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.28</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -71,6 +72,7 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>1.18.28</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
