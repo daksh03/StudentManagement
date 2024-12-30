@@ -9,5 +9,5 @@ import com.example.student.Model.Student;
 @Repository
 public interface StudentRepo extends MongoRepository<Student, String> , PagingAndSortingRepository<Student,String> {
 
-    
+
 }

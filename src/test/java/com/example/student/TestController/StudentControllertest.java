@@ -1,6 +1,19 @@
 package com.example.student.TestController;
 
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -9,30 +22,16 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
-import org.junit.jupiter.api.Test;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
- import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.List;
 
 import com.example.student.Controller.StudentController;
 import com.example.student.Model.Student;
 import com.example.student.Service.StudentService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(StudentController.class)
 
 public class StudentControllertest {
-    
+
     @Autowired
     MockMvc mockMvc;
 
@@ -63,15 +62,15 @@ void testgetAll() throws Exception {
 }
 
     @Test
-     void testAddStudent() throws Exception { 
+     void testAddStudent() throws Exception {
         Student student = new Student("1", "Daksh", 24, "A+", "Bijnor");
-         when(studentService.addStudent(student)).thenReturn(student); 
-         mockMvc.perform(post("/addStudent") 
-         .contentType("application/json") 
-         .content(objectMapper.writeValueAsString(student))) 
-         .andExpect(status().isOk()); 
+         when(studentService.addStudent(student)).thenReturn(student);
+         mockMvc.perform(post("/addStudent")
+         .contentType("application/json")
+         .content(objectMapper.writeValueAsString(student)))
+         .andExpect(status().isOk());
         }
-    
+
     @Test
      void getStudentByID() throws Exception {
         Student student = new Student("1", "Daksh",24 ,"A+" , "Bijnor");
@@ -87,11 +86,11 @@ void testgetAll() throws Exception {
         }
 
         @Test
-         void testDelete() throws Exception { 
-              doNothing().when(studentService).deleteStudent("1"); 
-              mockMvc.perform(delete("/delete/1")) 
+         void testDelete() throws Exception {
+              doNothing().when(studentService).deleteStudent("1");
+              mockMvc.perform(delete("/delete/1"))
               .andExpect(status().isOk());
               verify(studentService).deleteStudent("1"); }
-        
-        
-    }       
+
+
+    }

@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-@Getter 
+@Getter
 @Setter
 @Document(collection = "students")
 public class Student {
@@ -23,11 +23,12 @@ public class Student {
 
     @Min(value = 3,message = "Minimum age should be 3")
     private Integer age;
+
     private String grade;
 
     @NotBlank(message = "Address is mandotary")
     private String address;
-    
+
     public Student(){
 
     }

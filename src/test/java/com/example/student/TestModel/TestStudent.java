@@ -1,9 +1,9 @@
 package com.example.student.TestModel;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.example.student.Model.Student;
-import org.junit.jupiter.api.Assertions;
 
 public class TestStudent {
 
@@ -18,7 +18,7 @@ public class TestStudent {
 
         Assertions.assertEquals("1",student.getId());
         Assertions.assertEquals("Daksh", student.getName());
-        Assertions.assertEquals(24, student.getAge());  
+        Assertions.assertEquals(24, student.getAge());
         Assertions.assertEquals("A+", student.getGrade());
         Assertions.assertEquals("Choudhary Puram", student.getAddress());
 

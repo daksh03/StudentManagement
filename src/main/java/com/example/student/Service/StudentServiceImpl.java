@@ -2,8 +2,6 @@ package com.example.student.Service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -51,7 +49,7 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentRepo.save(student);
     }
-    
+
     @Override
     @CachePut(value = "students",key = "#id")
     public Student updateStudent(String id, Student student) {
